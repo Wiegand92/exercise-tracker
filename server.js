@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const mongoose = require('mongoose');
 
 require('dotenv').config();
 
@@ -12,9 +13,24 @@ const PORT = process.env.PORT || 4200;
 app.use(cors());
 app.use(express.json());
 
-//Serve static files//
+//Mongoose Connection//
+const uri = process.env.ATLAS_URI;
+mongoose.connect(uri, {useNewUrlParser: true});
 
+const connection = mongoose.connection;
+connection.once('open', () => {
+  console.log(`MongoDB database connection established successfully`);
+});
+
+//Serve static files//
 app.use(express.static(__dirname + '/public'));
+
+// Routes //
+const exercisesRouter = require('./server/routes/exercises');
+const usersRouter = require('./server/routes/users');
+
+app.use('/exercises', exercisesRouter);
+app.use('/users', usersRouter);
 
 // Start Server //
 app.listen(PORT, () => {

@@ -1,13 +1,15 @@
 import React from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 const App = () => (
-  <div className="app">
-    {/* <h1>Hello World</h1> */}
-    <p>
-      Check out the README
-      <a href="https://github.com/Wiegand92/react-tw"> here</a>
-    </p>
-  </div>
+  <Router>
+    <Navbar />
+    <br />
+    <Route path="/" exact component={ExerciseList} />
+    <Route path="/edit/:id" component={EditExercise} />
+    <Route path="/create" component={CreateExercise} />
+    <Route path="/user" component={CreateUser} />
+  </Router>
 );
 
 export default App;

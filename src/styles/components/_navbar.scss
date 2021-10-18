@@ -1,0 +1,21 @@
+.navbar {
+  @apply flex flex-row-reverse justify-between;
+  @apply bg-gray-700;
+  height: 68px;
+
+  .navbar-nav {
+    @apply flex flex-row-reverse justify-between;
+    width: 40vw;
+  }
+
+  .navbar-title {
+    @apply p-4 text-center text-3xl text-white underline;
+    width: 20vw;
+    text-shadow: dimgray;
+  }
+
+  .navbar-item {
+    @apply text-center p-4 text-lg text-white;
+    @apply hover:text-green-600 transition-colors;
+  }
+}

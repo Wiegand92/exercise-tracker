@@ -1,6 +1,12 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
+import Navbar from './Navbar';
+import CreateExercise from './CreateExercise';
+import EditExercise from './EditExercises';
+import ExerciseList from './ExercisesList';
+import CreateUser from './CreateUser';
+
 const App = () => (
   <Router>
     <Navbar />

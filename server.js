@@ -21,9 +21,16 @@ const connection = mongoose.connection;
 connection.once('open', () => {
   console.log(`MongoDB database connection established successfully`);
 });
-//Serve static files//
 
+//Serve static files//
 app.use(express.static(__dirname + '/public'));
+
+// Routes //
+const exercisesRouter = require('./server/routes/exercises');
+const usersRouter = require('./server/routes/users');
+
+app.use('/exercises', exercisesRouter);
+app.use('/users', usersRouter);
 
 // Start Server //
 app.listen(PORT, () => {

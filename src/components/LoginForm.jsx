@@ -12,7 +12,13 @@ const LoginForm = () => {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(user),
-    });
+    })
+      .then(() => {
+        setUsername('');
+        setPassword('');
+        alert('User Created!');
+      })
+      .catch(err => alert(`Error: ${err}`));
   };
 
   const handleLogin = e => {

@@ -29,10 +29,14 @@ const ExerciseForm = ({exercise}) => {
         },
         body: JSON.stringify(data),
       })
-        .then(res =>
-          res.status === 200 ? (window.location = '/') : res.json(),
-        )
-        .then(err => alert(err));
+        .then(res => {
+          if (res.status === 200) {
+            window.location = '/';
+          } else {
+            return res.json();
+          }
+        })
+        .then(error => alert(error));
     } else {
       fetch('/exercises/add', {
         method: 'POST',
@@ -49,9 +53,16 @@ const ExerciseForm = ({exercise}) => {
     if (!!exercise) {
       fetch(`/exercises/${exercise._id}`, {
         method: 'DELETE',
-      }).then(res =>
-        res.status === 200 ? (window.location = '/') : console.log(res),
-      );
+        headers: {'x-access-token': localStorage.getItem('token')},
+      })
+        .then(res => {
+          if (res.status === 200) {
+            window.location = '/';
+          } else {
+            return res.json();
+          }
+        })
+        .then(error => alert(error));
     }
   };
 

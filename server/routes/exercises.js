@@ -33,10 +33,20 @@ router.route('/:id').get((req, res) => {
     .catch(err => res.status(400).json(`Error: ${err}`));
 });
 
-router.route('/:id').delete((req, res) => {
-  Exercise.findByIdAndDelete(req.params.id)
-    .then(() => res.json('Exercise deleted.'))
-    .catch(err => res.status(400).json(`Error: ${err}`));
+router.route('/:id').delete(async (req, res) => {
+  const token = req.headers['x-access-token'];
+
+  const decoded = jwt.verify(token, 'secret123');
+
+  const exercise = await Exercise.findById(req.params.id);
+
+  if (exercise.username === decoded.name) {
+    Exercise.findByIdAndDelete(req.params.id)
+      .then(() => res.json('Exercise deleted.'))
+      .catch(err => res.status(400).json(`Error: ${err}`));
+  } else {
+    res.status(400).json('Error: This is not your card!');
+  }
 });
 
 router.route('/update/:id').post((req, res) => {

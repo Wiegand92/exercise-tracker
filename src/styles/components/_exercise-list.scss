@@ -1,0 +1,33 @@
+.exercise-list {
+  @apply w-3/4 mx-auto text-center text-white;
+
+  .username,
+  .duration {
+    @apply bg-gray-500;
+  }
+
+  .description,
+  .date {
+    @apply bg-gray-700;
+  }
+
+  thead {
+    tr {
+      @apply h-16 border-b-2;
+    }
+
+    tr:first-child {
+      @apply text-2xl bg-gray-800;
+    }
+  }
+
+  tbody {
+    tr {
+      @apply h-8;
+    }
+    tr:hover {
+      @apply text-green-700 transition-colors cursor-pointer;
+      text-shadow: 0.5px 0.5px black;
+    }
+  }
+}

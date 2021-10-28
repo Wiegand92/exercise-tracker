@@ -10,28 +10,24 @@ const ExerciseList = () => {
   }, []);
 
   return (
-    <div className="exercise-list">
-      <p>Welcome to the exercise list page</p>
-
-      <table>
-        <thead>
-          <tr>
-            <td colSpan="4">Exercises List</td>
-          </tr>
-          <tr>
-            <td>User</td>
-            <td>Description</td>
-            <td>Duration</td>
-            <td>Date</td>
-          </tr>
-        </thead>
-        <tbody>
-          {exercises.map(exercise => (
-            <ExerciseCard key={exercise._id} exercise={exercise} />
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <table className="exercise-list">
+      <thead>
+        <tr>
+          <td colSpan="4">Exercises List</td>
+        </tr>
+        <tr>
+          <td className="username">User</td>
+          <td className="description">Description</td>
+          <td className="duration">Duration (minutes)</td>
+          <td className="date">Date</td>
+        </tr>
+      </thead>
+      <tbody>
+        {exercises.map(exercise => (
+          <ExerciseCard key={exercise._id} exercise={exercise} />
+        ))}
+      </tbody>
+    </table>
   );
 };
 

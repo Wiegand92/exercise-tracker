@@ -7,7 +7,7 @@ const getDateString = userDate => {
   }
 
   const month =
-    date.getMonth() < 10 ? `0${date.getMonth()}` : `${date.getMonth() + 1}`;
+    date.getMonth() <= 10 ? `0${date.getMonth()}` : `${date.getMonth() + 1}`;
 
   return `${date.getFullYear()}-${month}-${date.getDate()}`;
 };

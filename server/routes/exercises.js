@@ -9,22 +9,31 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
-  const username = req.body.name;
-  const description = req.body.description;
-  const duration = Number(req.body.duration);
-  const date = Date.parse(req.body.date);
+  const token = req.headers['x-access-token'];
+  const decoded = !!token ? jwt.verify(token, 'secret123') : false;
 
-  const newExercise = new Exercise({
-    username,
-    description,
-    duration,
-    date,
-  });
+  console.log(req.body.date);
 
-  newExercise
-    .save()
-    .then(() => res.json('Exercise added!'))
-    .catch(err => res.status(400).json(`Error: ${err}`));
+  if (!!decoded) {
+    const username = decoded.name;
+    const description = req.body.description;
+    const duration = Number(req.body.duration);
+    const date = Date.parse(req.body.date);
+
+    const newExercise = new Exercise({
+      username,
+      description,
+      duration,
+      date,
+    });
+
+    newExercise
+      .save()
+      .then(() => res.json('Exercise added!'))
+      .catch(err => res.status(400).json(`Error: ${err}`));
+  } else {
+    res.status(400).json('You are not logged in!');
+  }
 });
 
 router.route('/:id').get((req, res) => {

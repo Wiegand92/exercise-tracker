@@ -1,27 +1,32 @@
 const exerciseAPI = {
   add: (data, token) => {
-    fetch('/exercises/add', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(data),
-    })
-      .then(res => {
-        if (res.status === 200) {
-          window.location = '/';
-        } else {
-          return res.json();
-        }
+    if (!!token) {
+      console.log(data);
+      fetch('/exercises/add', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json', 'x-access-token': token},
+        body: JSON.stringify(data),
       })
-      .then(error => {
-        if (!!error) {
-          alert(error);
-        }
-      });
+        .then(res => {
+          if (res.status === 200) {
+            window.location = '/';
+          } else {
+            return res.json();
+          }
+        })
+        .then(error => {
+          if (!!error) {
+            alert(error);
+          }
+        });
+    } else {
+      alert('You are not logged in!');
+    }
   },
   delete: (exercise, token) => {
     fetch(`/exercises/${exercise._id}`, {
       method: 'DELETE',
-      headers: {'x-access-token': localStorage.getItem('token')},
+      headers: {'x-access-token': token},
     })
       .then(res => {
         if (res.status === 200) {

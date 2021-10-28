@@ -13,12 +13,24 @@ const ExerciseList = () => {
     <div className="exercise-list">
       <p>Welcome to the exercise list page</p>
 
-      {exercises.map(exercise => {
-        const Exercise = (
-          <ExerciseCard key={exercise._id} exercise={exercise} />
-        );
-        return Exercise;
-      })}
+      <table>
+        <thead>
+          <tr>
+            <td colSpan="4">Exercises List</td>
+          </tr>
+          <tr>
+            <td>User</td>
+            <td>Description</td>
+            <td>Duration</td>
+            <td>Date</td>
+          </tr>
+        </thead>
+        <tbody>
+          {exercises.map(exercise => (
+            <ExerciseCard key={exercise._id} exercise={exercise} />
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

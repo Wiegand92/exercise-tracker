@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import getDateString from '../utils/getDateString';
+import exerciseAPI from '../utils/exerciseAPI';
 
 const ExerciseForm = ({exercise}) => {
   const [name, setName] = useState('');
@@ -20,49 +21,19 @@ const ExerciseForm = ({exercise}) => {
   const onSubmit = e => {
     e.preventDefault();
     const data = {name, description, duration, date};
+    const token = localStorage.getItem('token');
     if (!!exercise) {
-      fetch(`/exercises/update/${exercise._id}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-access-token': localStorage.getItem('token'),
-        },
-        body: JSON.stringify(data),
-      })
-        .then(res => {
-          if (res.status === 200) {
-            window.location = '/';
-          } else {
-            return res.json();
-          }
-        })
-        .then(error => alert(error));
+      exerciseAPI.update(exercise, data, token);
     } else {
-      fetch('/exercises/add', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data),
-      }).then(res =>
-        res.status === 200 ? (window.location = '/') : console.log(res),
-      );
+      exerciseAPI.add(exercise, data, token);
     }
   };
 
   const handleDelete = e => {
     e.preventDefault();
+    const token = localStorage.getItem('token');
     if (!!exercise) {
-      fetch(`/exercises/${exercise._id}`, {
-        method: 'DELETE',
-        headers: {'x-access-token': localStorage.getItem('token')},
-      })
-        .then(res => {
-          if (res.status === 200) {
-            window.location = '/';
-          } else {
-            return res.json();
-          }
-        })
-        .then(error => alert(error));
+      exerciseAPI.delete(exercise, token);
     }
   };
 

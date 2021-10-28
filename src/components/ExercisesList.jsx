@@ -1,14 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import ExerciseCard from './ExerciseCard';
+import exerciseAPI from '../utils/exerciseAPI';
 
 const ExerciseList = () => {
   const [exercises, setExercises] = useState([]);
 
   useEffect(() => {
-    fetch('/exercises')
-      .then(response => response.json())
-      .then(exercisesList => setExercises(exercisesList))
-      .catch(err => console.error(`Error: ${err}`));
+    exerciseAPI.get(setExercises);
   }, []);
 
   return (

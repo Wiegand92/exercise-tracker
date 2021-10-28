@@ -16,7 +16,9 @@ const ExerciseList = () => {
       <p>Welcome to the exercise list page</p>
 
       {exercises.map(exercise => {
-        const Exercise = <ExerciseCard exercise={exercise} />;
+        const Exercise = (
+          <ExerciseCard key={exercise._id} exercise={exercise} />
+        );
         return Exercise;
       })}
     </div>

@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import ExerciseForm from './ExerciseForm';
 
-const CreateExercise = () => (
-  <div className="create-exercise">
-    <p>Welcome to the create exercise page</p>
-  </div>
-);
+const CreateExercise = () => {
+  return (
+    <div className="">
+      <p>Create a new exercise</p>
+      <ExerciseForm></ExerciseForm>
+    </div>
+  );
+};
 
 export default CreateExercise;

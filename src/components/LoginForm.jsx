@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 
-const CreateUser = () => {
+const LoginForm = () => {
   const [username, setUserame] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = e => {
+  const handleCreate = e => {
     e.preventDefault();
     const user = {username, password};
 
@@ -26,8 +26,11 @@ const CreateUser = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data.user, data.auth);
-        localStorage.setItem('token', data.auth);
+        console.log(data);
+        if (data.user) {
+          localStorage.setItem('token', data.auth);
+          window.location = '/';
+        }
       })
       .catch(err => console.error(err));
   };
@@ -35,7 +38,7 @@ const CreateUser = () => {
   return (
     <div className="create-user">
       <p>Welcome to the create user page</p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLogin}>
         Username:{' '}
         <input
           type="text"
@@ -50,11 +53,11 @@ const CreateUser = () => {
           onChange={e => setPassword(e.target.value)}
           name="password"
         />
-        <input type="submit" value="Create User" />
-        <button onClick={handleLogin}>Login</button>
+        <input type="submit" value="Login" />
+        <button onClick={handleCreate}>Create User</button>
       </form>
     </div>
   );
 };
 
-export default CreateUser;
+export default LoginForm;

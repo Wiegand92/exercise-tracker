@@ -18,4 +18,9 @@
     @apply text-center p-4 text-lg text-white;
     @apply hover:text-green-600 transition-colors;
   }
+
+  .active {
+    @apply text-green-600;
+    text-shadow: 0.5px 0.5px black;
+  }
 }

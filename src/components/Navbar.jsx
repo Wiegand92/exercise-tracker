@@ -1,26 +1,26 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {NavLink, Link} from 'react-router-dom';
 
 const Navbar = () => (
   <nav className="navbar">
-    <Link to="/" className="navbar-title">
+    <Link to="/" exact className="navbar-title">
       ExerTracker
     </Link>
     <ul className="navbar-nav">
       <li className="navbar-item">
-        <Link to="/" className="nav-link">
+        <NavLink to="/" exact className="nav-link">
           Exercises
-        </Link>
+        </NavLink>
       </li>
       <li className="navbar-item">
-        <Link to="/create" className="nav-link">
+        <NavLink to="/create" className="nav-link">
           Create Exercise Log
-        </Link>
+        </NavLink>
       </li>
       <li className="navbar-item">
-        <Link to="/user" className="nav-link">
+        <NavLink to="/user" className="nav-link">
           Login
-        </Link>
+        </NavLink>
       </li>
     </ul>
   </nav>

@@ -1,0 +1,22 @@
+.exercise-form {
+  @apply flex flex-col justify-between w-96 h-80 mx-auto px-4 py-8;
+  @apply bg-gray-700 rounded-lg shadow-lg;
+
+  .input-box {
+    @apply flex justify-between;
+  }
+
+  input[type='submit'],
+  button {
+    @apply bg-gray-900 text-white transition-colors;
+    @apply w-52 p-2 mx-auto rounded-sm;
+  }
+
+  button:hover {
+    @apply bg-red-700 text-black;
+  }
+
+  input[type='submit']:hover {
+    @apply bg-green-700;
+  }
+}

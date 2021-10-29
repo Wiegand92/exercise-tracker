@@ -16,7 +16,7 @@ const ExerciseForm = ({exercise}) => {
     }
   }, [exercise]);
 
-  const onSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
     const data = {description, duration, date};
     const token = localStorage.getItem('token');
@@ -36,8 +36,8 @@ const ExerciseForm = ({exercise}) => {
   };
 
   return (
-    <div className="exercise-form">
-      <form onSubmit={e => onSubmit(e)}>
+    <form onSubmit={e => handleSubmit(e)} className="exercise-form">
+      <div className="input-box">
         Description:{' '}
         <input
           type="text"
@@ -46,6 +46,8 @@ const ExerciseForm = ({exercise}) => {
           className="description"
           onChange={e => setDescription(e.target.value)}
         />
+      </div>
+      <div className="input-box">
         Duration (minutes):{' '}
         <input
           value={duration}
@@ -53,6 +55,8 @@ const ExerciseForm = ({exercise}) => {
           type="number"
           onChange={e => setDuration(e.target.value)}
         />
+      </div>
+      <div className="input-box">
         Date:{' '}
         <input
           type="date"
@@ -60,17 +64,17 @@ const ExerciseForm = ({exercise}) => {
           value={date}
           onChange={e => setDate(e.target.value)}
         />
-        <input
-          type="submit"
-          value={!!exercise ? 'Update Exercise' : 'Submit Exercise'}
-        />
-        {!!exercise ? (
-          <button onClick={handleDelete}>Delete Exercise</button>
-        ) : (
-          ''
-        )}
-      </form>
-    </div>
+      </div>
+      <input
+        type="submit"
+        value={!!exercise ? 'Update Exercise' : 'Submit Exercise'}
+      />
+      {!!exercise ? (
+        <button onClick={handleDelete}>Delete Exercise</button>
+      ) : (
+        ''
+      )}
+    </form>
   );
 };
 

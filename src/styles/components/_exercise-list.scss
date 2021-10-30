@@ -1,33 +1,46 @@
 .exercise-list {
-  @apply w-3/4 mx-auto text-center text-white;
+  @apply w-3/4 h-5/6 mx-auto my-auto overflow-y-auto;
+  @apply text-center text-white;
 
-  .username,
-  .duration {
-    @apply bg-gray-500;
+  table {
+    @apply w-full h-full;
   }
 
-  .description,
-  .date {
+  td:nth-child(odd) {
+    @apply bg-gray-500;
+  }
+  td:nth-child(even) {
     @apply bg-gray-700;
   }
 
   thead {
+    @apply sticky top-0 border-none;
     tr {
       @apply h-16 border-b-2;
     }
 
     tr:first-child {
-      @apply text-2xl bg-gray-800;
+      @apply border-none;
+      td {
+        @apply text-2xl bg-gray-800;
+      }
     }
   }
-
   tbody {
+    @apply overflow-y-auto;
     tr {
       @apply h-8;
     }
+
     tr:hover {
-      @apply text-green-700 transition-colors cursor-pointer;
-      text-shadow: 0.5px 0.5px black;
+      @apply text-black transition-all cursor-pointer h-12;
+      td {
+        @apply bg-green-700;
+      }
     }
+  }
+
+  tfoot {
+    @apply h-full;
   }
 }

@@ -8,9 +8,8 @@ import ExerciseList from './ExercisesList';
 import LoginForm from './LoginForm';
 
 const App = () => (
-  <Router>
+  <Router className="app">
     <Navbar />
-    <br />
     <Route path="/" exact component={ExerciseList} />
     <Route path="/edit/:id" component={EditExercise} />
     <Route path="/create" component={CreateExercise} />

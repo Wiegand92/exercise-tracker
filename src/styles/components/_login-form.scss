@@ -1,0 +1,27 @@
+.login-form {
+  @apply flex flex-col justify-between text-center;
+  @apply h-80 w-60 m-auto p-8;
+  @apply bg-gray-700 text-white rounded-lg shadow-2xl;
+
+  h2 {
+    @apply text-2xl underline;
+  }
+
+  input[type='text'],
+  input[type='password'] {
+    @apply p-4 h-8;
+    @apply text-black text-center;
+
+    &:focus {
+      @apply border-collapse;
+    }
+  }
+
+  input[type='submit'],
+  button {
+    @apply bg-gray-900 transition-colors duration-300;
+    &:hover {
+      @apply bg-green-500 cursor-pointer;
+    }
+  }
+}

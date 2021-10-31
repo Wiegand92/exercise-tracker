@@ -42,27 +42,28 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="create-user">
-      <p>Welcome to the create user page</p>
-      <form onSubmit={handleLogin}>
-        Username:{' '}
-        <input
-          type="text"
-          value={username}
-          onChange={e => setUserame(e.target.value)}
-          name="username"
-        />
-        Password:{' '}
-        <input
-          type="password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          name="password"
-        />
-        <input type="submit" value="Login" />
-        <button onClick={handleCreate}>Create User</button>
-      </form>
-    </div>
+    <form className="login-form" onSubmit={handleLogin}>
+      <h2>Login</h2>
+      Username:{' '}
+      <input
+        type="text"
+        value={username}
+        onChange={e => setUserame(e.target.value)}
+        name="username"
+        autoComplete="off"
+        required
+      />
+      Password:{' '}
+      <input
+        type="password"
+        value={password}
+        onChange={e => setPassword(e.target.value)}
+        name="password"
+        required
+      />
+      <input type="submit" value="Login" />
+      <button onClick={handleCreate}>Create User</button>
+    </form>
   );
 };
 

@@ -33,7 +33,7 @@
     }
 
     tr:hover {
-      @apply text-black transition-all cursor-pointer h-12;
+      @apply text-black transition-all duration-300 ease-out cursor-pointer h-12;
       td {
         @apply bg-green-700;
       }

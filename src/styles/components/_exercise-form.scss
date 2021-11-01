@@ -1,6 +1,6 @@
 .exercise-form {
   @apply flex flex-col justify-between;
-  @apply m-auto p-8;
+  @apply m-auto p-8 overflow-x-auto;
   @apply lg:w-2/5;
   @apply bg-gray-700 rounded-lg shadow-2xl;
   @apply text-white text-center;
@@ -14,7 +14,8 @@
   input[type='text'],
   input[type='number'],
   input[type='date'] {
-    @apply text-black pl-4 h-8 mb-8 text-left;
+    @apply text-black pl-4 text-left;
+    @apply lg:h-8 mb-8;
   }
   button:hover {
     @apply bg-red-700 text-black;

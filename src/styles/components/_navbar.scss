@@ -1,21 +1,19 @@
 .navbar {
-  @apply flex flex-row-reverse justify-between;
+  @apply flex flex-row-reverse justify-between mb-4;
   @apply bg-gray-700;
-  height: 68px;
 
   .navbar-nav {
-    @apply flex flex-row-reverse justify-between;
-    width: 40vw;
+    @apply flex flex-col;
+    @apply md:flex-row justify-between;
   }
 
   .navbar-title {
-    @apply p-4 text-center text-3xl text-white underline;
-    width: 20vw;
-    text-shadow: dimgray;
+    @apply p-4 text-right my-auto text-xl text-white underline;
   }
 
   .navbar-item {
-    @apply text-center p-4 text-lg text-white;
+    @apply text-center p-2 text-xs text-white;
+    @apply md:m-auto text-lg;
     @apply hover:text-green-600 transition-colors;
   }
 

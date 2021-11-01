@@ -1,14 +1,15 @@
 .navbar {
-  @apply flex flex-row-reverse justify-between mb-4;
+  @apply flex flex-col justify-between mb-4;
+  @apply md:flex-row-reverse;
   @apply bg-gray-700;
 
   .navbar-nav {
-    @apply flex flex-col;
-    @apply md:flex-row justify-between;
+    @apply flex flex-row-reverse justify-between;
   }
 
   .navbar-title {
-    @apply p-4 text-right my-auto text-xl text-white underline;
+    @apply p-4 text-center my-auto text-3xl text-white underline;
+    @apply md:text-right;
   }
 
   .navbar-item {

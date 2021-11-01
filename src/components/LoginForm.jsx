@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 const LoginForm = () => {
-  const [username, setUserame] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleCreate = e => {
@@ -48,7 +48,7 @@ const LoginForm = () => {
       <input
         type="text"
         value={username}
-        onChange={e => setUserame(e.target.value)}
+        onChange={e => setUsername(e.target.value)}
         name="username"
         autoComplete="off"
         required

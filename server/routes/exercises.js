@@ -1,6 +1,7 @@
 const router = require('express').Router();
 let Exercise = require('../models/exercise.model');
 const jwt = require('jsonwebtoken');
+const dayjs = require('dayjs');
 
 router.route('/').get((req, res) => {
   Exercise.find()
@@ -12,13 +13,11 @@ router.route('/add').post((req, res) => {
   const token = req.headers['x-access-token'];
   const decoded = !!token ? jwt.verify(token, 'secret123') : false;
 
-  console.log(req.body.date);
-
   if (!!decoded) {
     const username = decoded.name;
     const description = req.body.description;
     const duration = Number(req.body.duration);
-    const date = Date.parse(req.body.date);
+    const date = dayjs(req.body.date);
 
     const newExercise = new Exercise({
       username,
@@ -66,9 +65,10 @@ router.route('/update/:id').post((req, res) => {
   Exercise.findById(req.params.id)
     .then(exercise => {
       if (exercise.username === decoded.name) {
+        console.log(req.body.date);
         exercise.description = req.body.description;
         exercise.duration = Number(req.body.duration);
-        exercise.date = Date.parse(req.body.date);
+        exercise.date = dayjs(req.body.date);
 
         exercise
           .save()

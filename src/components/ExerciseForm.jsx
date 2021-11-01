@@ -1,18 +1,18 @@
 import React, {useState, useEffect} from 'react';
-import getDateString from '../utils/getDateString';
 import exerciseAPI from '../utils/exerciseAPI';
+import dayjs from 'dayjs';
 
 const ExerciseForm = ({exercise}) => {
   const [description, setDescription] = useState('');
   const [duration, setDuration] = useState(0);
-  const [date, setDate] = useState(getDateString());
+  const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
 
   useEffect(() => {
     if (!!exercise) {
       const {description, duration, date} = exercise;
       if (description) setDescription(description);
       if (duration) setDuration(duration);
-      if (date) setDate(getDateString(date));
+      if (date) setDate(dayjs(date).format('YYYY-MM-DD'));
     }
   }, [exercise]);
 
@@ -50,10 +50,7 @@ const ExerciseForm = ({exercise}) => {
         value={duration}
         name="duration"
         type="number"
-        onChange={e => {
-          console.log(e.target.value, e.target.valueAsDate);
-          setDuration(e.target.value);
-        }}
+        onChange={e => setDuration(e.target.value)}
       />
       Date:{' '}
       <input

@@ -1,8 +1,10 @@
 import React from 'react';
+import {useHistory} from 'react-router';
 
 const ExerciseList = ({exercise}) => {
+  let history = useHistory();
   const handleClick = () => {
-    window.location = `/edit/${exercise._id}`;
+    history.push(`/edit/${exercise._id}`);
   };
   return (
     <tr className="exercise-list" onClick={handleClick}>

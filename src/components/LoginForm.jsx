@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
+import {useHistory} from 'react-router';
 
 const LoginForm = () => {
+  const history = useHistory();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -35,7 +37,7 @@ const LoginForm = () => {
         console.log(data);
         if (data.user) {
           localStorage.setItem('token', data.auth);
-          window.location = '/';
+          history.push('/');
         }
       })
       .catch(err => console.error(err));

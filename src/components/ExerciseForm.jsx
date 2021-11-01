@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {useHistory} from 'react-router';
 import exerciseAPI from '../utils/exerciseAPI';
 import dayjs from 'dayjs';
 
@@ -6,6 +7,7 @@ const ExerciseForm = ({exercise}) => {
   const [description, setDescription] = useState('');
   const [duration, setDuration] = useState(0);
   const [date, setDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const history = useHistory();
 
   useEffect(() => {
     if (!!exercise) {
@@ -21,9 +23,9 @@ const ExerciseForm = ({exercise}) => {
     const data = {description, duration, date};
     const token = localStorage.getItem('token');
     if (!!exercise) {
-      exerciseAPI.update(exercise, data, token);
+      exerciseAPI.update(exercise, data, token, history);
     } else {
-      exerciseAPI.add(data, token);
+      exerciseAPI.add(data, token, history);
     }
   };
 
@@ -31,7 +33,7 @@ const ExerciseForm = ({exercise}) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
     if (!!exercise) {
-      exerciseAPI.delete(exercise, token);
+      exerciseAPI.delete(exercise, token, history);
     }
   };
 

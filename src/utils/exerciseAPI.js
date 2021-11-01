@@ -1,5 +1,5 @@
 const exerciseAPI = {
-  add: (data, token) => {
+  add: (data, token, history) => {
     if (!!token) {
       console.log(data);
       fetch('/exercises/add', {
@@ -9,7 +9,7 @@ const exerciseAPI = {
       })
         .then(res => {
           if (res.status === 200) {
-            window.location = '/';
+            history.push('/');
           } else {
             return res.json();
           }
@@ -23,14 +23,14 @@ const exerciseAPI = {
       alert('You are not logged in!');
     }
   },
-  delete: (exercise, token) => {
+  delete: (exercise, token, history) => {
     fetch(`/exercises/${exercise._id}`, {
       method: 'DELETE',
       headers: {'x-access-token': token},
     })
       .then(res => {
         if (res.status === 200) {
-          window.location = '/';
+          history.push('/');
         } else {
           return res.json();
         }
@@ -41,7 +41,7 @@ const exerciseAPI = {
         }
       });
   },
-  update: (exercise, data, token) => {
+  update: (exercise, data, token, history) => {
     fetch(`/exercises/update/${exercise._id}`, {
       method: 'POST',
       headers: {
@@ -52,7 +52,7 @@ const exerciseAPI = {
     })
       .then(res => {
         if (res.status === 200) {
-          window.location = '/';
+          history.push('/');
         } else {
           return res.json();
         }
@@ -68,6 +68,12 @@ const exerciseAPI = {
       .then(response => response.json())
       .then(exercisesList => setExercises(exercisesList))
       .catch(err => console.error(`Error: ${err}`));
+  },
+  getById: (setExercise, id) => {
+    fetch(`/exercises/${id}`)
+      .then(response => response.json())
+      .then(data => setExercise({...data}))
+      .catch(err => console.error(err));
   },
 };
 

@@ -29,10 +29,12 @@ const ExerciseList = () => {
           ))}
         </tbody>
         <tfoot>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
         </tfoot>
       </table>
     </div>

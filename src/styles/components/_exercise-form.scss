@@ -1,17 +1,21 @@
 .exercise-form {
-  @apply flex flex-col justify-between w-96 h-80 mx-auto px-4 py-8;
-  @apply bg-gray-700 rounded-lg shadow-lg;
-
-  .input-box {
-    @apply flex justify-between;
-  }
+  @apply flex flex-col justify-between;
+  @apply m-auto p-8;
+  @apply lg:w-2/5;
+  @apply bg-gray-700 rounded-lg shadow-2xl;
+  @apply text-white text-center;
 
   input[type='submit'],
   button {
-    @apply bg-gray-900 text-white transition-colors;
-    @apply w-52 p-2 mx-auto rounded-sm;
+    @apply bg-gray-900 transition-colors cursor-pointer;
+    @apply w-52 p-2 mt-8 mx-auto rounded-sm;
   }
 
+  input[type='text'],
+  input[type='number'],
+  input[type='date'] {
+    @apply text-black pl-4 h-8 mb-8 text-left;
+  }
   button:hover {
     @apply bg-red-700 text-black;
   }

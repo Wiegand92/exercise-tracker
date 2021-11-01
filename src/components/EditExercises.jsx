@@ -12,16 +12,8 @@ const EditExercise = () => {
       .then(data => setExercise({...data}))
       .catch(err => console.error(err));
   }, []);
-  useEffect(() => {
-    console.log(exercise);
-  }, [exercise]);
 
-  return (
-    <div className="edit-exercise">
-      <p>Welcome to the edit exercise page {id}</p>
-      <ExerciseForm exercise={exercise}></ExerciseForm>
-    </div>
-  );
+  return <ExerciseForm exercise={exercise}></ExerciseForm>;
 };
 
 export default EditExercise;

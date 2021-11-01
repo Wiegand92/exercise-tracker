@@ -37,34 +37,31 @@ const ExerciseForm = ({exercise}) => {
 
   return (
     <form onSubmit={e => handleSubmit(e)} className="exercise-form">
-      <div className="input-box">
-        Description:{' '}
-        <input
-          type="text"
-          name="description"
-          value={description}
-          className="description"
-          onChange={e => setDescription(e.target.value)}
-        />
-      </div>
-      <div className="input-box">
-        Duration (minutes):{' '}
-        <input
-          value={duration}
-          name="duration"
-          type="number"
-          onChange={e => setDuration(e.target.value)}
-        />
-      </div>
-      <div className="input-box">
-        Date:{' '}
-        <input
-          type="date"
-          name="date"
-          value={date}
-          onChange={e => setDate(e.target.value)}
-        />
-      </div>
+      Description:{' '}
+      <input
+        type="text"
+        name="description"
+        value={description}
+        className="description"
+        onChange={e => setDescription(e.target.value)}
+      />
+      Duration (minutes):{' '}
+      <input
+        value={duration}
+        name="duration"
+        type="number"
+        onChange={e => {
+          console.log(e.target.value, e.target.valueAsDate);
+          setDuration(e.target.value);
+        }}
+      />
+      Date:{' '}
+      <input
+        type="date"
+        name="date"
+        value={date}
+        onChange={e => setDate(e.target.value)}
+      />
       <input
         type="submit"
         value={!!exercise ? 'Update Exercise' : 'Submit Exercise'}

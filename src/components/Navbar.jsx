@@ -3,7 +3,7 @@ import {NavLink, Link} from 'react-router-dom';
 
 const Navbar = () => (
   <nav className="navbar">
-    <Link to="/" exact className="navbar-title">
+    <Link to="/" className="navbar-title">
       ExerTracker
     </Link>
     <ul className="navbar-nav">

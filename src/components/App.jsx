@@ -10,7 +10,7 @@ import LoginForm from './LoginForm';
 const App = () => (
   <Router className="app">
     <Navbar />
-    <Route path="/" exact component={ExerciseList} />
+    <Route exact path="/" component={ExerciseList} />
     <Route path="/edit/:id" component={EditExercise} />
     <Route path="/create" component={CreateExercise} />
     <Route path="/user" component={LoginForm} />

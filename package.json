@@ -1,5 +1,5 @@
 {
-  "name": "Exertracker",
+  "name": "exertracker",
   "version": "1.0.0",
   "description": "A simple exercise tracker built on the mern stack.",
   "main": "server.js",

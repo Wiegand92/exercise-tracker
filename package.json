@@ -8,7 +8,7 @@
     "start": "nodemon server.js",
     "no-server": "cross-env NODE_ENV=development webpack serve",
     "dev": "cross-env NODE_ENV=development webpack serve & nodemon server.js",
-    "test": "jest --coverage"
+    "test": "jest --coverage --env=jsdom --verbose"
   },
   "author": "Deep_Thought",
   "license": "MIT",

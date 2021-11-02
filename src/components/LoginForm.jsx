@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useHistory} from 'react-router';
+import userAPI from '../utils/userAPI';
 
 const LoginForm = () => {
   const history = useHistory();
@@ -9,58 +10,33 @@ const LoginForm = () => {
   const handleCreate = e => {
     e.preventDefault();
     const user = {username, password};
-
-    fetch('/users/add', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(user),
-    })
-      .then(() => {
-        setUsername('');
-        setPassword('');
-        alert('User Created!');
-      })
-      .catch(err => alert(`Error: ${err}`));
+    userAPI.add(user, setUsername, setPassword);
   };
 
   const handleLogin = e => {
     e.preventDefault();
     const user = {username, password};
-
-    fetch('/users/login', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(user),
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        if (data.user) {
-          localStorage.setItem('token', data.auth);
-          history.push('/');
-        }
-      })
-      .catch(err => console.error(err));
+    userAPI.login(user, history);
   };
 
   return (
     <form className="login-form" onSubmit={handleLogin}>
       <h2>Login</h2>
-      Username:{' '}
+      <label htmlFor="username">Username:</label>
       <input
         type="text"
         value={username}
         onChange={e => setUsername(e.target.value)}
-        name="username"
+        id="username"
         autoComplete="off"
         required
       />
-      Password:{' '}
+      <label htmlFor="password">Password:</label>
       <input
         type="password"
         value={password}
         onChange={e => setPassword(e.target.value)}
-        name="password"
+        id="password"
         required
       />
       <input type="submit" value="Login" />

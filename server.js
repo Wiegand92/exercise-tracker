@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
@@ -31,6 +32,10 @@ const usersRouter = require('./server/routes/users');
 
 app.use('/exercises', exercisesRouter);
 app.use('/users', usersRouter);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'public/index.html'));
+});
 
 // Start Server //
 app.listen(PORT, () => {

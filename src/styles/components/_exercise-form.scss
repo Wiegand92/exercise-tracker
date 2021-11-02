@@ -1,0 +1,27 @@
+.exercise-form {
+  @apply flex flex-col justify-between;
+  @apply m-auto p-8 overflow-x-auto;
+  @apply lg:w-2/5;
+  @apply bg-gray-700 rounded-lg shadow-2xl;
+  @apply text-white text-center;
+
+  input[type='submit'],
+  button {
+    @apply bg-gray-900 transition-colors cursor-pointer;
+    @apply w-52 p-2 mt-8 mx-auto rounded-sm;
+  }
+
+  input[type='text'],
+  input[type='number'],
+  input[type='date'] {
+    @apply text-black pl-4 text-left;
+    @apply lg:h-8 mb-8;
+  }
+  button:hover {
+    @apply bg-red-700 text-black;
+  }
+
+  input[type='submit']:hover {
+    @apply bg-green-700;
+  }
+}

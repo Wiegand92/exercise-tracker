@@ -23,7 +23,7 @@ module.exports = {
   output: {
     filename: 'index.js',
     path: path.join(__dirname, 'public/scripts'),
-    clean: true,
+    publicPath: '/',
   },
 
   plugins,
@@ -72,7 +72,6 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     hot: true,
-    open: true,
     port: 8080,
     proxy: {'/': 'http://localhost:4200'},
   },

@@ -1,0 +1,25 @@
+.navbar {
+  @apply flex flex-col justify-between mb-4;
+  @apply md:flex-row-reverse;
+  @apply bg-gray-700;
+
+  .navbar-nav {
+    @apply flex flex-row-reverse justify-between;
+  }
+
+  .navbar-title {
+    @apply p-4 text-center my-auto text-3xl text-white underline;
+    @apply md:text-right;
+  }
+
+  .navbar-item {
+    @apply text-center p-2 text-xs text-white;
+    @apply md:m-auto text-lg;
+    @apply hover:text-green-600 transition-colors;
+  }
+
+  .active {
+    @apply text-green-600;
+    text-shadow: 0.5px 0.5px black;
+  }
+}

@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The login form renders with all its components 1`] = `
+<DocumentFragment>
+  <form
+    class="login-form"
+  >
+    <h2>
+      Login
+    </h2>
+    <label
+      for="username"
+    >
+      Username:
+    </label>
+    <input
+      autocomplete="off"
+      id="username"
+      required=""
+      type="text"
+      value=""
+    />
+    <label
+      for="password"
+    >
+      Password:
+    </label>
+    <input
+      id="password"
+      required=""
+      type="password"
+      value=""
+    />
+    <input
+      type="submit"
+      value="Login"
+    />
+    <button>
+      Create User
+    </button>
+  </form>
+</DocumentFragment>
+`;

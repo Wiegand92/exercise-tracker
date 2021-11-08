@@ -1,26 +1,14 @@
 import React, {useState} from 'react';
-import {useHistory} from 'react-router';
-import userAPI from '../utils/userAPI';
 
-const LoginForm = () => {
-  const history = useHistory();
+const LoginForm = ({onSubmit, onCreate}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleCreate = e => {
-    e.preventDefault();
-    const user = {username, password};
-    userAPI.add(user, setUsername, setPassword);
-  };
-
-  const handleLogin = e => {
-    e.preventDefault();
-    const user = {username, password};
-    userAPI.login(user, history);
-  };
-
   return (
-    <form className="login-form" onSubmit={handleLogin}>
+    <form
+      className="login-form"
+      onSubmit={e => onSubmit(e, {username, password})}
+    >
       <h2>Login</h2>
       <label htmlFor="username">Username:</label>
       <input
@@ -40,7 +28,17 @@ const LoginForm = () => {
         required
       />
       <input type="submit" value="Login" />
-      <button onClick={handleCreate}>Create User</button>
+      <button
+        onClick={e => {
+          onCreate(e, {username, password}).then(() => {
+            setUsername('');
+            setPassword('');
+            alert('User Created!');
+          });
+        }}
+      >
+        Create User
+      </button>
     </form>
   );
 };

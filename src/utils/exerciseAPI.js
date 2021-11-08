@@ -1,8 +1,9 @@
+import 'regenerator-runtime';
+
 const exerciseAPI = {
-  add: (data, token, history) => {
+  add: async (data, token, history) => {
     if (!!token) {
-      console.log(data);
-      fetch('/exercises/add', {
+      await fetch('/exercises/add', {
         method: 'POST',
         headers: {'Content-Type': 'application/json', 'x-access-token': token},
         body: JSON.stringify(data),
@@ -14,7 +15,7 @@ const exerciseAPI = {
             return res.json();
           }
         })
-        .then(error => {
+        .catch(error => {
           if (!!error) {
             alert(error);
           }
@@ -23,8 +24,8 @@ const exerciseAPI = {
       alert('You are not logged in!');
     }
   },
-  delete: (exercise, token, history) => {
-    fetch(`/exercises/${exercise._id}`, {
+  delete: async (exercise, token, history) => {
+    await fetch(`/exercises/${exercise._id}`, {
       method: 'DELETE',
       headers: {'x-access-token': token},
     })
@@ -35,14 +36,14 @@ const exerciseAPI = {
           return res.json();
         }
       })
-      .then(error => {
+      .catch(error => {
         if (!!error) {
           alert(error);
         }
       });
   },
-  update: (exercise, data, token, history) => {
-    fetch(`/exercises/update/${exercise._id}`, {
+  update: async (exercise, data, token, history) => {
+    await fetch(`/exercises/update/${exercise._id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -57,20 +58,18 @@ const exerciseAPI = {
           return res.json();
         }
       })
-      .then(error => {
-        if (!!error) {
-          alert(error);
-        }
+      .catch(error => {
+        alert(error);
       });
   },
-  get: setExercises => {
-    fetch('/exercises')
+  get: async setExercises => {
+    await fetch('/exercises')
       .then(response => response.json())
       .then(exercisesList => setExercises(exercisesList))
       .catch(err => console.error(`Error: ${err}`));
   },
-  getById: (setExercise, id) => {
-    fetch(`/exercises/${id}`)
+  getById: async (setExercise, id) => {
+    await fetch(`/exercises/${id}`)
       .then(response => response.json())
       .then(data => setExercise({...data}))
       .catch(err => console.error(err));

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1636395725750" clover="3.2.0">
-  <project timestamp="1636395725750" name="All files">
+<coverage generated="1636643138712" clover="3.2.0">
+  <project timestamp="1636643138712" name="All files">
     <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6" elements="17" coveredelements="17" complexity="0" loc="11" ncloc="11" packages="1" files="1" classes="1"/>
     <file name="LoginForm.jsx" path="/home/alex/Desktop/Coding/Projects/exercise-tracker/src/components/LoginForm.jsx">
       <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>

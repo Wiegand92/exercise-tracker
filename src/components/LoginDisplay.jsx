@@ -8,12 +8,18 @@ const LoginDisplay = () => {
 
   const onSubmit = async (e, user) => {
     e.preventDefault();
-    await userAPI.login(user).then(data => {
-      if (data.user) {
-        localStorage.setItem('token', data.auth);
-        history.push('/');
-      }
-    });
+    await userAPI
+      .login(user)
+      .then(data => {
+        if (data.user) {
+          localStorage.setItem('token', data.auth);
+          history.push('/');
+        }
+        if (data.error) {
+          alert(`Error: ${data.error}`);
+        }
+      })
+      .catch(err => console.error(`Error: ${err}`));
   };
   const onCreate = async (e, user) => {
     e.preventDefault();

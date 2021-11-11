@@ -16,7 +16,7 @@ const userAPI = {
       body: JSON.stringify(user),
     })
       .then(res => res.json())
-      .catch(err => console.error(err));
+      .catch(err => err);
     return data;
   },
 };

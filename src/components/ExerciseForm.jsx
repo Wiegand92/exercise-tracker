@@ -18,22 +18,25 @@ const ExerciseForm = ({exercise}) => {
     }
   }, [exercise]);
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     const data = {description, duration, date};
     const token = localStorage.getItem('token');
     if (!!exercise) {
-      exerciseAPI.update(exercise, data, token, history);
+      const res = await exerciseAPI.update(exercise, data, token);
+      if (res.status === 200) history.push('/');
     } else {
-      exerciseAPI.add(data, token, history);
+      !!token ? exerciseAPI.add(data, token) : alert('You are not logged in!');
+      history.push('/');
     }
   };
 
-  const handleDelete = e => {
+  const handleDelete = async e => {
     e.preventDefault();
     const token = localStorage.getItem('token');
     if (!!exercise) {
-      exerciseAPI.delete(exercise, token, history);
+      const res = await exerciseAPI.delete(exercise, token);
+      if (res.status === 200) history.push('/');
     }
   };
 

@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1636643138712" clover="3.2.0">
-  <project timestamp="1636643138712" name="All files">
-    <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6" elements="17" coveredelements="17" complexity="0" loc="11" ncloc="11" packages="1" files="1" classes="1"/>
+<coverage generated="1636917662724" clover="3.2.0">
+  <project timestamp="1636917662724" name="All files">
+    <metrics statements="19" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="10" elements="29" coveredelements="29" complexity="0" loc="19" ncloc="19" packages="1" files="3" classes="3"/>
+    <file name="ExerciseCard.jsx" path="/home/alex/Desktop/Coding/Projects/exercise-tracker/src/components/ExerciseCard.jsx">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="5" count="8" type="stmt"/>
+      <line num="6" count="8" type="stmt"/>
+      <line num="7" count="1" type="stmt"/>
+      <line num="9" count="8" type="stmt"/>
+    </file>
+    <file name="ExerciseTable.jsx" path="/home/alex/Desktop/Coding/Projects/exercise-tracker/src/components/ExerciseTable.jsx">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="5" count="3" type="stmt"/>
+      <line num="20" count="8" type="stmt"/>
+    </file>
     <file name="LoginForm.jsx" path="/home/alex/Desktop/Coding/Projects/exercise-tracker/src/components/LoginForm.jsx">
       <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
       <line num="3" count="1" type="stmt"/>

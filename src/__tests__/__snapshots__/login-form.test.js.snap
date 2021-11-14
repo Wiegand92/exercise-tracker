@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The login form renders with all its components 1`] = `
+exports[`Login Form renders with all its components 1`] = `
 <DocumentFragment>
   <form
     class="login-form"

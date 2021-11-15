@@ -8,22 +8,19 @@ const LoginDisplay = () => {
 
   const onSubmit = async (e, user) => {
     e.preventDefault();
-    await userAPI
-      .login(user)
-      .then(data => {
-        if (data.user) {
-          localStorage.setItem('token', data.auth);
-          history.push('/');
-        }
-        if (data.error) {
-          alert(`Error: ${data.error}`);
-        }
-      })
-      .catch(err => console.error(`Error: ${err}`));
+    const data = await userAPI.login(user);
+
+    if (data.user) {
+      localStorage.setItem('token', data.auth);
+      history.push('/');
+    }
+    if (data.error) {
+      alert(`Error: ${data.error}`);
+    }
   };
   const onCreate = async (e, user) => {
     e.preventDefault();
-    await userAPI.add(user).catch(err => alert(`Error: ${err}`));
+    await userAPI.add(user);
   };
   return <LoginForm onSubmit={onSubmit} onCreate={onCreate} />;
 };

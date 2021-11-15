@@ -4,37 +4,7 @@ import {createMemoryHistory} from 'history';
 import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ExerciseTable from '../components/ExerciseTable';
-
-const exercises = [
-  {
-    _id: 1,
-    username: 'Alex',
-    description: 'Bike Ride',
-    duration: 20,
-    date: Date(),
-  },
-  {
-    _id: 2,
-    username: 'Billy',
-    description: 'Bike Ride',
-    duration: 20,
-    date: Date(),
-  },
-  {
-    _id: 3,
-    username: 'Frank',
-    description: 'Bike Ride',
-    duration: 20,
-    date: Date(),
-  },
-  {
-    _id: 4,
-    username: 'Zaphod',
-    description: 'Bike Ride',
-    duration: 20,
-    date: Date(),
-  },
-];
+import exercises from '../__fixtures__/exercises';
 
 describe('Exercise Table', () => {
   it('Renders the header', () => {

@@ -30,6 +30,7 @@
     "jest": "^27.3.1",
     "jest-fetch-mock": "^3.0.3",
     "mini-css-extract-plugin": "^1.4.1",
+    "msw": "^0.35.0",
     "postcss": "^8.2.10",
     "postcss-loader": "^5.2.0",
     "postcss-preset-env": "^6.7.0",
@@ -41,7 +42,8 @@
     "tailwindcss": "^2.1.1",
     "webpack": "^5.33.2",
     "webpack-cli": "^4.6.0",
-    "webpack-dev-server": "^4.3.1"
+    "webpack-dev-server": "^4.3.1",
+    "whatwg-fetch": "^3.6.2"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

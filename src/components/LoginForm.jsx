@@ -29,12 +29,10 @@ const LoginForm = ({onSubmit, onCreate}) => {
       />
       <input type="submit" value="Login" />
       <button
-        onClick={e => {
-          onCreate(e, {username, password}).then(() => {
-            setUsername('');
-            setPassword('');
-            alert('User Created!');
-          });
+        onClick={async e => {
+          await onCreate(e, {username, password});
+          setUsername('');
+          setPassword('');
         }}
       >
         Create User

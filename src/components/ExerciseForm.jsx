@@ -26,7 +26,9 @@ const ExerciseForm = ({exercise}) => {
       const res = await exerciseAPI.update(exercise, data, token);
       if (res.status === 200) history.push('/');
     } else {
-      !!token ? exerciseAPI.add(data, token) : alert('You are not logged in!');
+      !!token
+        ? await exerciseAPI.add(data, token)
+        : alert('You are not logged in!');
       history.push('/');
     }
   };
@@ -34,33 +36,35 @@ const ExerciseForm = ({exercise}) => {
   const handleDelete = async e => {
     e.preventDefault();
     const token = localStorage.getItem('token');
-    if (!!exercise) {
+    if (!!exercise && token) {
       const res = await exerciseAPI.delete(exercise, token);
       if (res.status === 200) history.push('/');
+    } else {
+      alert('You are not logged in, how did you get here?');
     }
   };
 
   return (
     <form onSubmit={e => handleSubmit(e)} className="exercise-form">
-      Description:{' '}
+      <label htmlFor="description">Description:</label>
       <input
         type="text"
-        name="description"
+        id="description"
         value={description}
         className="description"
         onChange={e => setDescription(e.target.value)}
       />
-      Duration (minutes):{' '}
+      <label htmlFor="duration">Duration (minutes):</label>
       <input
         value={duration}
-        name="duration"
+        id="duration"
         type="number"
         onChange={e => setDuration(e.target.value)}
       />
-      Date:{' '}
+      <label htmlFor="date">Date:</label>
       <input
         type="date"
-        name="date"
+        id="date"
         value={date}
         onChange={e => setDate(e.target.value)}
       />

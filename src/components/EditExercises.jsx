@@ -7,8 +7,9 @@ import exerciseAPI from '../utils/exerciseAPI';
 const EditExercise = () => {
   const [exercise, setExercise] = useState({});
   const {id} = useParams();
-  useEffect(() => {
-    exerciseAPI.getById(setExercise, id);
+  useEffect(async () => {
+    const exerciseContent = await exerciseAPI.getById(id);
+    setExercise(exerciseContent);
   }, []);
 
   return <ExerciseForm exercise={exercise}></ExerciseForm>;

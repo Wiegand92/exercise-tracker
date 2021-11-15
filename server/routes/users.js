@@ -19,7 +19,7 @@ router.route('/add').post(async (req, res) => {
   newUser
     .save()
     .then(() => res.json('User added!'))
-    .catch(err => res.status(400).json(`Error: ${err}`));
+    .catch(err => res.status(400).json({error: err}));
 });
 
 router.route('/login').post(async (req, res) => {
@@ -27,14 +27,17 @@ router.route('/login').post(async (req, res) => {
 
   const user = await User.findOne({username});
 
+  if (!user) {
+    return res.status(404).json({error: 'User not found'});
+  }
+
   const matchPassword = await bcrypt.compare(password, user.password);
-  console.log(matchPassword);
 
   if (matchPassword) {
     const token = jwt.sign({name: user.username}, 'secret123');
     return res.json({status: 'ok', auth: token, user: user.username});
   } else {
-    return res.json({status: 'error', user: false});
+    return res.status(401).json({error: 'Password does not match'});
   }
 });
 

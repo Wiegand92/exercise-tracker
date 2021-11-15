@@ -5,7 +5,7 @@ import Navbar from './Navbar';
 import CreateExercise from './CreateExercise';
 import EditExercise from './EditExercises';
 import ExerciseList from './ExercisesList';
-import LoginForm from './LoginForm';
+import LoginDisplay from './LoginDisplay';
 
 const App = () => (
   <Router className="app">
@@ -13,7 +13,7 @@ const App = () => (
     <Route exact path="/" component={ExerciseList} />
     <Route path="/edit/:id" component={EditExercise} />
     <Route path="/create" component={CreateExercise} />
-    <Route path="/user" component={LoginForm} />
+    <Route path="/user" component={LoginDisplay} />
   </Router>
 );
 
